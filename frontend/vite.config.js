@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Set VITE_BASE_PATH env var to your repo name for GitHub Pages
-// e.g. VITE_BASE_PATH=/chintu-web  npm run build
-const base = process.env.VITE_BASE_PATH || '/'
+// GitHub Pages base path — matches the repo name "CHINTU"
+// Locally this falls back to '/'
+const base = process.env.VITE_BASE_PATH ?? (process.env.NODE_ENV === 'production' ? '/CHINTU/' : '/')
 
 export default defineConfig({
   base,
