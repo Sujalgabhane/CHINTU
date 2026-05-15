@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Root Variables ─────────────────────────────────────── */
+:root {
+  --neon-blue:   #00d4ff;
+  --neon-purple: #7c3aed;
+  --neon-pink:   #ff00ff;
+  --neon-green:  #00e676;
+  --neon-orange: #ff9500;
+  --neon-red:    #ff4444;
+  --neon-gold:   #ffd700;
+  --dark-900:    #020712;
+  --dark-800:    #050a14;
+  --dark-700:    #080f1e;
+  --dark-600:    #0d1628;
+  --dark-500:    #111e35;
+  --dark-400:    #1a2d4d;
+  --glass-bg:    rgba(8, 15, 30, 0.75);
+  --glass-border: rgba(0, 212, 255, 0.15);
+}
+
+/* ── Base Styles ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--dark-900);
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #020712 0%, #030b18 100%);
+  min-height: 100vh;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--dark-800); }
+::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--neon-purple); }
+
+/* ── Glassmorphism Card ─────────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 212, 255, 0.35);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.08);
+}
+
+.glass-card-purple {
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+}
+
+/* ── Neon Text ──────────────────────────────────────────── */
+.text-neon-blue   { color: var(--neon-blue);   text-shadow: 0 0 10px rgba(0,212,255,0.6); }
+.text-neon-purple { color: var(--neon-purple);  text-shadow: 0 0 10px rgba(124,58,237,0.6); }
+.text-neon-green  { color: var(--neon-green);   text-shadow: 0 0 10px rgba(0,230,118,0.6); }
+.text-neon-orange { color: var(--neon-orange);  text-shadow: 0 0 10px rgba(255,149,0,0.6); }
+.text-neon-red    { color: var(--neon-red);     text-shadow: 0 0 10px rgba(255,68,68,0.6); }
+.text-neon-gold   { color: var(--neon-gold);    text-shadow: 0 0 10px rgba(255,215,0,0.6); }
+
+/* ── Neon Glow Borders ──────────────────────────────────── */
+.border-neon-blue   { border-color: var(--neon-blue)!important; box-shadow: 0 0 12px rgba(0,212,255,0.3); }
+.border-neon-purple { border-color: var(--neon-purple)!important; box-shadow: 0 0 12px rgba(124,58,237,0.3); }
+.border-neon-green  { border-color: var(--neon-green)!important; box-shadow: 0 0 12px rgba(0,230,118,0.3); }
+.border-neon-red    { border-color: var(--neon-red)!important; box-shadow: 0 0 12px rgba(255,68,68,0.3); }
+
+/* ── Neon Button ────────────────────────────────────────── */
+.btn-neon {
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));
+  border: 1px solid rgba(0,212,255,0.4);
+  color: var(--neon-blue);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-neon:hover {
+  background: linear-gradient(135deg, rgba(0,212,255,0.3), rgba(124,58,237,0.3));
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0,212,255,0.4), inset 0 0 20px rgba(0,212,255,0.1);
+  color: #fff;
+}
+
+.btn-neon-red {
+  background: linear-gradient(135deg, rgba(255,68,68,0.15), rgba(200,0,0,0.15));
+  border: 1px solid rgba(255,68,68,0.4);
+  color: var(--neon-red);
+}
+.btn-neon-red:hover {
+  background: linear-gradient(135deg, rgba(255,68,68,0.3), rgba(200,0,0,0.2));
+  border-color: var(--neon-red);
+  box-shadow: 0 0 20px rgba(255,68,68,0.5);
+}
+
+.btn-neon-green {
+  background: linear-gradient(135deg, rgba(0,230,118,0.15), rgba(0,180,80,0.15));
+  border: 1px solid rgba(0,230,118,0.4);
+  color: var(--neon-green);
+}
+
+/* ── Futuristic Toggle ──────────────────────────────────── */
+.toggle-track {
+  width: 48px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--dark-500);
+  border: 1px solid rgba(0,212,255,0.2);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-track.on {
+  background: linear-gradient(90deg, rgba(0,212,255,0.3), rgba(124,58,237,0.3));
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 12px rgba(0,212,255,0.4);
+}
+
+.toggle-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #555;
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  transition: all 0.3s ease;
+}
+
+.toggle-track.on .toggle-thumb {
+  left: 27px;
+  background: var(--neon-blue);
+  box-shadow: 0 0 8px var(--neon-blue);
+}
+
+/* ── Status Dot ─────────────────────────────────────────── */
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.status-dot.active {
+  background: var(--neon-green);
+  box-shadow: 0 0 6px var(--neon-green);
+  animation: pulseStatus 2s ease-in-out infinite;
+}
+.status-dot.inactive { background: #555; }
+.status-dot.warning {
+  background: var(--neon-orange);
+  box-shadow: 0 0 6px var(--neon-orange);
+}
+.status-dot.alert {
+  background: var(--neon-red);
+  box-shadow: 0 0 6px var(--neon-red);
+  animation: pulseStatus 1s ease-in-out infinite;
+}
+
+@keyframes pulseStatus {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+/* Period extended to 4 s for a calm, stable heartbeat */
+.status-dot.active  { animation-duration: 4s; }
+.status-dot.alert   { animation-duration: 2s; }
+
+/* ── Orbitron Headings ──────────────────────────────────── */
+.font-orbitron { font-family: 'Orbitron', sans-serif; }
+.font-mono-alt  { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Animated Scan Line ─────────────────────────────────── */
+.scan-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.scan-overlay::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+  animation: scan 3s linear infinite;
+  opacity: 0.4;
+}
+
+/* ── Holographic Background Grid ────────────────────────── */
+.holo-grid {
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Circular Progress ──────────────────────────────────── */
+.circular-progress {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* ── Emotion Badge ──────────────────────────────────────── */
+.emotion-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  animation: emotionPulse 2s ease-in-out infinite;
+}
+
+@keyframes emotionPulse {
+  0%, 100% { box-shadow: 0 0 10px currentColor; }
+  50%       { box-shadow: 0 0 25px currentColor, 0 0 50px currentColor44; }
+}
+
+/* ── Chart Styling ──────────────────────────────────────── */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(0, 212, 255, 0.08) !important;
+}
+.recharts-text { fill: #8899aa !important; font-size: 11px !important; }
+
+/* ── Notification Toast ─────────────────────────────────── */
+.notif-toast {
+  animation: slideInRight 0.6s ease-out;
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Jarvis AI Message ──────────────────────────────────── */
+.ai-message {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(124,58,237,0.08));
+  border-left: 3px solid var(--neon-blue);
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ── Camera Grid ────────────────────────────────────────── */
+.camera-tile {
+  background: #03080f;
+  border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16/9;
+}
+
+/* ── Sidebar ────────────────────────────────────────────── */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #8899aa;
+  font-size: 13px;
+  font-weight: 500;
+  position: relative;
+}
+
+.sidebar-item:hover {
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--neon-blue);
+}
+
+.sidebar-item.active {
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.1));
+  color: var(--neon-blue);
+  border: 1px solid rgba(0,212,255,0.25);
+  box-shadow: 0 0 15px rgba(0,212,255,0.1);
+}
+
+.sidebar-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 20%; bottom: 20%;
+  width: 3px;
+  background: var(--neon-blue);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--neon-blue);
+}
+
+/* ── Webcam Feed ────────────────────────────────────────── */
+.webcam-container {
+  background: #030810;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0,212,255,0.2);
+  position: relative;
+}
+
+/* ── Data Stream Decoration ─────────────────────────────── */
+.data-stream-bg {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 10px,
+    rgba(0,212,255,0.02) 10px,
+    rgba(0,212,255,0.02) 12px
+  );
+  animation: dataStream 2s linear infinite;
+}
+
+/* ── Animations (referenced by Tailwind config) ─────────── */
+@keyframes pulseNeon {
+  0%, 100% { box-shadow: 0 0 5px #00d4ff, 0 0 20px rgba(0,212,255,0.27); }
+  50%       { box-shadow: 0 0 20px #00d4ff, 0 0 60px rgba(0,212,255,0.4); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes scan {
+  0%   { top: -2px; }
+  100% { top: calc(100% + 2px); }
+}
+@keyframes glowRing {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes dataStream {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 40px; }
+}
+
+/* ── Voice Orb ──────────────────────────────────────────── */
+@keyframes orbPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.25), 0 0 60px rgba(0,212,255,0.08); }
+  50%       { box-shadow: 0 0 40px rgba(0,212,255,0.45), 0 0 100px rgba(0,212,255,0.18); }
+}
+@keyframes orbRing {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes rippleOut {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.voice-orb {
+  animation: orbPulse 2.5s ease-in-out infinite;
+  border-radius: 50%;
+}
+.voice-orb-ring {
+  animation: orbRing 3s linear infinite;
+}
+
+/* ── Waveform Bars ──────────────────────────────────────── */
+@keyframes waveFloat {
+  0%, 100% { transform: scaleY(0.3); }
+  50%       { transform: scaleY(1.0); }
+}
+.waveform-bar {
+  border-radius: 2px;
+  transform-origin: bottom;
+  animation: waveFloat 0.6s ease-in-out infinite;
+}
+.waveform-bar:nth-child(2)  { animation-delay: 0.05s; }
+.waveform-bar:nth-child(3)  { animation-delay: 0.10s; }
+.waveform-bar:nth-child(4)  { animation-delay: 0.15s; }
+.waveform-bar:nth-child(5)  { animation-delay: 0.20s; }
+.waveform-bar:nth-child(6)  { animation-delay: 0.25s; }
+.waveform-bar:nth-child(7)  { animation-delay: 0.10s; }
+.waveform-bar:nth-child(8)  { animation-delay: 0.05s; }
+
+/* ── Jarvis Typewriter ──────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.jarvis-cursor {
+  display: inline-block;
+  width: 2px;
+  background: var(--neon-blue);
+  animation: blink 0.8s step-end infinite;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  height: 1em;
+}
+
+/* ── Command Chips ───────────────────────────────────────── */
+.command-chip {
+  transition: all 0.2s ease;
+}
+.command-chip:hover {
+  background: rgba(0,212,255,0.1) !important;
+  border-color: rgba(0,212,255,0.35) !important;
+  color: var(--neon-blue) !important;
+  box-shadow: 0 0 10px rgba(0,212,255,0.15);
+}
+
+/* ── Hide scrollbar (chip row) ──────────────────────────── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Wake word badge pulse ──────────────────────────────── */
+@keyframes wakeFlash {
+  0%, 100% { box-shadow: 0 0 8px rgba(0,230,118,0.3); }
+  50%       { box-shadow: 0 0 24px rgba(0,230,118,0.7), 0 0 48px rgba(0,230,118,0.3); }
+}
+.wake-badge {
+  animation: wakeFlash 1s ease-in-out infinite;
+}
+
+/* ── Listening ring (outer animated border) ─────────────── */
+@keyframes listeningRing {
+  0%   { box-shadow: 0 0 0 0 rgba(0,230,118,0.5); }
+  70%  { box-shadow: 0 0 0 20px rgba(0,230,118,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,230,118,0); }
+}
+.listening-ring {
+  animation: listeningRing 1.2s ease-out infinite;
+}
+
